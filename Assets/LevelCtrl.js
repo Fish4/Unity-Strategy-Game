@@ -37,6 +37,8 @@ function Update () {
 		if (lastHitObj.tag == "Grid_Empty") {
 			lastHitObj.renderer.material = selectedMat;
 			lastHitObj.tag = "Grid_Taken";
+
+			print('change status (' + lastHitObj.name + ') to "Taken"');
 		}
 	}
 
@@ -44,6 +46,8 @@ function Update () {
 		if (lastHitObj.tag == "Grid_Taken") {
 			lastHitObj.renderer.material = originalMat;
 			lastHitObj.tag = "Grid_Empty";
+
+			print('change status (' + lastHitObj.name + ') to "Empty"');
 		}	
 	}
 }
