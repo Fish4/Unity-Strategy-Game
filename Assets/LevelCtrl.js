@@ -7,9 +7,20 @@ var placementLayerMask : LayerMask;
 
 var lastHitObj : GameObject;
 
+private var gridLevel : GameObject[, ];
+
+private final var WIDTH:int = 8;
+private final var HEIGHT:int = 8;
+
 
 function Start () {
-	
+	gridLevel = new GameObject[WIDTH, HEIGHT];
+
+	for (var x = 0; x < WIDTH; x ++) {
+		for (var y = 0; y < HEIGHT; y ++) {
+			gridLevel[x, y] = GameObject.Find("Plane" + x + "_" + y);
+		}
+	}
 }
 
 function Update () {
@@ -39,6 +50,14 @@ function Update () {
 			lastHitObj.tag = "Grid_Taken";
 
 			print('change status (' + lastHitObj.name + ') to "Taken"');
+
+			for (var x : int = 0; x < gridLevel.GetLength(0); x ++) {
+				for (var y : int = 0; y < gridLevel.GetLength(1); y ++) {
+					if(gridLevel[x, y].name == lastHitObj.name) {
+						print('found grid');
+					}
+				}
+			}
 		}
 	}
 
